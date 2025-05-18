@@ -11,7 +11,7 @@ import gradio as gr
 
 load_dotenv()
 
-books = pd.read_csv("books_with_emotions.csv")
+books = pd.read_csv("../datasets/books_with_emotions.csv")
 books["large_thumbnail"] = books["thumbnail"] + "&fife=w800"  # Random resize
 books["large_thumbnail"] = np.where(
     books["large_thumbnail"].isna(),
@@ -20,7 +20,7 @@ books["large_thumbnail"] = np.where(
 )
 
 
-raw_documents = TextLoader("tagged_description.txt").load()
+raw_documents = TextLoader("../datasets/tagged_description.txt").load()
 text_splitter = CharacterTextSplitter(chunk_size=0, chunk_overlap=0, separator="\n")
 documents = text_splitter.split_documents(raw_documents)
 
